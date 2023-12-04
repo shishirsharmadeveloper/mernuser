@@ -49,17 +49,17 @@ const UserRegister=() => {
     </div>)}
     <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">First name</label>
-    <input  {...register("firstname",{ required: "First Name should not be empty"})} type="text" class="form-control" value={firstname} onChange={(e)=>setFirstname(e.target.value)}/>
+    <input id="firstname" {...register("firstname",{ required: "First Name should not be empty"})} type="text" class="form-control" value={firstname} onChange={(e)=>setFirstname(e.target.value)}/>
     {errors.firstname?.message && <p>{errors.firstname?.message}</p>}
     </div>
     <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Last name</label>
-    <input  {...register("lastname",{ required: "Last Name should not be empty"})} type="text" class="form-control" value={lastname} onChange={(e)=>setLastname(e.target.value)}/>
+    <input id="lastname" {...register("lastname",{ required: "Last Name should not be empty"})} type="text" class="form-control" value={lastname} onChange={(e)=>setLastname(e.target.value)}/>
     {errors.lastname?.message && <p>{errors.lastname?.message}</p>}
     </div>
     <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Email</label>
-    <input {...register("email",{ required: "Email should not be empty",
+    <input id="email" {...register("email",{ required: "Email should not be empty",
     pattern:{
         value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
         message:"Invalid Email"
