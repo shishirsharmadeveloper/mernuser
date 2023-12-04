@@ -1,17 +1,26 @@
+const validator = require('email-validator');
+
 var User = require('../models/user.model.js');
 
 exports.create = function(req, res) {
 
-    var user = new User({firstname: req.body.firstname, lastname: req.body.lastname, email:req.body.email});
+  var user = new User({firstname: req.body.firstname, lastname: req.body.lastname, email:req.body.email});
+    
+  const isValid = validator.validate(req.body.email);
 
+  if (isValid) {
     user.save(function(err, data) {
         if(err) {
-            console.log(err);
             res.status(500).send({message: "Some error occurred"});
         } else {
             res.send(data);
         }
     });
+  } else {
+    return res.status(400).json({ error: 'Email is not valid' });
+  }
+
+   
 };
 
 exports.findAll = function(req, res) {
